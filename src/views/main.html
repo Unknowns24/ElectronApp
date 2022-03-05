@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../public/css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <title>%AppName%</title>
+  </head>
+  <body>
+    <div class="topBar">
+      <div class="titleBar">
+        <div class="title">%AppName%</div>
+      </div>
+      <div class="titleBarBtns">
+        <button id="minimizeBtn" class="topBtn minimizeBtn"></button>
+        <button id="closeBtn" class="topBtn closeBtn"></button>
+      </div>
+    </div>
+
+    <div class="container">
+      
+      
+    </div>
+    <script>
+      const { ipcRenderer } = require("electron");
+
+      document.querySelector("#closeBtn").addEventListener("click", () => {
+        ipcRenderer.send("main:close");
+      });
+
+      document.querySelector("#minimizeBtn").addEventListener("click", () => {
+        ipcRenderer.send("main:minimize");
+      });
+    </script>
+  </body>
+</html>

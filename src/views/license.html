@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../public/css/lux/bootstrap.min.css" />
+    <title>License</title>
+</head>
+<body>
+    <div class="container p-4">
+        <form id="licenseForm">
+            <div class="form-group">
+                <label for="License" class="mb-1">Insert your license</label>
+                <input type="text" id="license" class="form-control mb-2" placeholder="License" autofocus />
+                <button type="submit" class="btn btn-primary btn-block">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const { ipcRenderer } = require("electron");
+        const form = document.querySelector("#licenseForm");
+  
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+  
+          const license = document.querySelector("#license").value;
+  
+          if (license === "") {
+            const data = {
+              title: "Missing parameters",
+              msg: "Please complete all fields!",
+              error: true,
+            }
+  
+            return ipcRenderer.send("notification:new", data);
+          }
+  
+          const data = {
+            license: license,
+          };
+  
+          ipcRenderer.send("license:create", data);
+        });
+    </script>
+</body>
+</html>

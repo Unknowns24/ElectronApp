@@ -1,0 +1,26 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron src/index.js",
+    "watch": "nodemon --exec electron src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "electron": "^17.0.1",
+    "electron-alert": "^0.1.20",
+    "electron-fetch": "^1.7.4",
+    "form-data": "^4.0.0",
+    "fs-jetpack": "^4.3.1",
+    "getmac": "^5.20.0",
+    "nodejs-base64": "^2.0.0",
+    "nodemon": "^2.0.15",
+    "set-cookie-parser": "^2.4.8"
+  }
+}

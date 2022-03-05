@@ -1,0 +1,7 @@
+{
+    "appName": "%AppName%",
+    "gatewayURL": "http://localhost:8080",
+    "rememberFile": "d2953a12ca382cc7edf64c580a791fc2.dat",
+    "secretKey": "",
+    "verificationTime": 900000
+}

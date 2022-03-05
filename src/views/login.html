@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../public/css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <title>%AppName% - Login</title>
+  </head>
+  <body>
+    <div class="topBar">
+      <div class="titleBar">
+        <div class="title">%AppName% - Login</div>
+      </div>
+      <div class="titleBarBtns">
+        <button id="minimizeBtn" class="topBtn minimizeBtn"></button>
+        <button id="closeBtn" class="topBtn closeBtn"></button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="leftsideLogin noSelectable">
+        <img
+          src="../public/img/logo.png"
+          alt="appLogo"
+          style="width: 80px; height: 100px; margin-top: 70%"
+        />
+      </div>
+      <div class="rightsideLogin">
+        <div class="mainContent" style="justify-content: center">
+          <form id="login">
+            <div class="form_field">
+              <i class="form_icon fa-solid fa-user"></i>
+              <input
+                id="email"
+                type="text"
+                class="form_input"
+                placeholder="email"
+              />
+            </div>
+
+            <div class="form_field">
+              <i class="form_icon fas fa-lock"></i>
+              <input
+                id="password"
+                type="password"
+                class="form_input"
+                placeholder="password"
+              />
+            </div>
+
+            <button class="form_button">Login</button>
+
+            <div>
+              <p class="form_chkbox" style="color: var(--text)">
+                <input id="remember" type="checkbox" />Remember me.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="../public/js/md5.js"></script>
+    <script>
+      const { ipcRenderer } = require("electron");
+      const form = document.querySelector("#login");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const email = document.querySelector("#email").value;
+        const password = document.querySelector("#password").value;
+        const remember = document.querySelector("#remember").checked;
+
+        if (email === "" || password === "") {
+          const data = {
+            title: "Missing parameters",
+            msg: "Please complete all fields!",
+            error: true,
+          }
+
+          return ipcRenderer.send("notification:new", data);
+        }
+
+        const data = {
+          email: email,
+          password: md5(password),
+          remember: remember,
+        };
+
+        ipcRenderer.send("login:attempt", data);
+      });
+
+      document.querySelector("#closeBtn").addEventListener("click", () => {
+        ipcRenderer.send("main:close");
+      });
+
+      document.querySelector("#minimizeBtn").addEventListener("click", () => {
+        ipcRenderer.send("login:minimize");
+      });
+    </script>
+  </body>
+</html>

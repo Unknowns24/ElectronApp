@@ -1,0 +1,187 @@
+:root {
+  --color: #001aff;
+  --active: #0300c2;
+  --text: #949aa7;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+}
+
+.noSelectable {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+}
+
+.leftsideLogin {
+  background-color: var(--color);
+  display: flex;
+  width: 40%;
+  height: 100%;
+  justify-content: center;
+  float: left;
+}
+
+.rightsideLogin {
+  background-color: rgb(236, 236, 236);
+  display: flex;
+  width: 65%;
+  height: 100%;
+  justify-content: center;
+  float: right;
+}
+
+.topBar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #343b48;
+  background-color: #1b1d23;
+  color: var(--text);
+  -user-select: none;
+}
+
+.topBar > .titleBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.topBar > .titleBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.titleBar > img {
+  margin-left: 10px;
+}
+
+.titleBar > .title {
+  margin-left: 10px;
+  width: 100%;
+  line-height: 30px;
+  margin-top: 5px;
+  padding-bottom: 5px;
+  -webkit-app-region: drag;
+}
+
+.topBar > .titleBarBtns {
+  display: flex;
+  flex-direction: row;
+  width: 80px;
+  height: 40px;
+}
+
+.titleBarBtns > .topBtn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.titleBarBtns > .topBtn:hover {
+  background-color: #272c36;
+}
+
+.titleBarBtns > .closeBtn:hover {
+  background-color: #e60000;
+}
+
+.titleBarBtns > .closeBtn:active {
+  background-color: #bd0000;
+}
+
+.titleBarBtns > .minimizeBtn {
+  background-image: url("../img/icons/minimize.png");
+  background-size: 20px;
+}
+
+.titleBarBtns > .closeBtn {
+  background-image: url("../img/icons/close.png");
+  background-size: 20px;
+}
+
+.form_field {
+  padding: 20px 0px;
+  position: relative;
+}
+
+.form_icon {
+  position: absolute;
+  top: 30px;
+  color: var(--color);
+}
+
+.form_input {
+  border: none;
+  border-bottom: 2px solid #4f4c4b;
+  background: none;
+  padding: 10px;
+  padding-left: 24px;
+  font-weight: 700;
+  width: 300px;
+  transition: 0.2s;
+  color: var(--text);
+  font-size: medium;
+}
+
+.form_button {
+  margin-top: 10px;
+  padding: 10px;
+  padding-left: 24px;
+  width: 330px;
+  background-color: var(--color);
+  border: none;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.form_button:hover {
+  background-color: var(--active);
+  transition: 0.5s;
+}
+
+.form_input:active,
+.form_input:focus,
+.form_input:hover {
+  outline: none;
+  border-bottom-color: var(--color);
+}
+
+.form_chkbox {
+  font-weight: 700;
+  width: 300px;
+  transition: 0.2s;
+  color: var(--text);
+  font-size: medium;
+  float: left;
+}
+
+.mainContent {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
