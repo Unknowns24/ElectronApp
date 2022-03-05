@@ -7,8 +7,8 @@ body {
   font-family: "Roboto", sans-serif;
   background-image: radial-gradient(
     circle farthest-corner at center,
-    #080808 0%,
-    #000000 100%
+    #000000 0%,
+    #858585 100%
   );
   -webkit-app-region: drag;
 }
